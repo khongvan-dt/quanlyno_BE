@@ -1,0 +1,57 @@
+--------------------------------------các bước của db fist
+- thêm  
+"ConnectionStrings": {
+        "DefaultConnection": "Data Source=DESKTOP-HBD9I5Q\\TEW_SQLEXPRESS;Initial Catalog=HumanResourceManagement;Integrated Security=True;TrustServerCertificate=True;"
+    }
+- kết nối db 
+	dotnet ef dbcontext scaffold "Data Source=DESKTOP-HBD9I5Q\TEW_SQLEXPRESS;Initial Catalog=quanlyno;Integrated Security=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models
+-     HumanResourceManagementContext _context;
+
+        public DepartmentsController()
+        {
+            _context = new HumanResourceManagementContext();
+        }
+
+
+--------------------------------------các bước của code fist
+dotnet new webapi -n ....
+
+1 tạo dự án
+- dotnet new mvc -o QuanLyTinTuc --auth Individual 
+- kết nối db:
+    dotnet ef dbcontext scaffold "Data Source=DESKTOP-HBD9I5Q\TEW_SQLEXPRESS;Initial Catalog=testThi;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" Microsoft.EntityFrameworkCore.SqlServer -o Models
+- thêm 
+        1111111   builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+// Add ApplicationDbContext
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));
+
+- tạo model sau đó 
+    dotnet ef migrations add dbStart --context ApplicationDbContext
+    dotnet ef database update
+
+-Tạo controller:
+     dotnet aspnet-codegenerator controller -name <têncontroller>Controller -m <model class cần tạo> -dc <ApplicationDbContext cần  tạo> -outDir Controllers -namespace <Tên dự án>.Controllers
+
+ dotnet aspnet-codegenerator controller -name EmployeeController -m Khoa -dc Employeeb4Context -outDir Controllers -namespace b4.Controllers
+
+
+
+
+3/tạo view 
+dotnet aspnet-codegenerator razorpage MVC -m Category(ten controller) -dc RazorPagesMovieContext -outDir Views/Categories (thư mục ra)
+
+
+
+
+/////
+
+-Cài đặt tool: dotnet tool install -g dotnet-aspnet-codegenerator\(nếu chưa cài)
+
+dotnet add package Microsoft.EntityFrameworkCore --version 8.*
+         dotnet add package Microsoft.EntityFrameworkCore.Design --version 8.*
+         dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 8.*
+         dotnet add package Microsoft.EntityFrameworkCore.Tools --version 8.*
+         dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 8.*
+dotnet tool install --global dotnet-aspnet-codegenerator --version 8.*

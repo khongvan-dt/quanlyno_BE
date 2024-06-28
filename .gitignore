@@ -1,0 +1,30 @@
+# Binaries
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+
+# Resharper
+_ReSharper*/
+
+# Package files
+*.nupkg
+*.pdb
+*.dll
+*.exe
+*.cache
+
+# Others
+*~
+Migrations/

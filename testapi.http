@@ -1,0 +1,211 @@
+
+####
+GET http://localhost:5219/api/BorrowerInformation HTTP/1.1
+Content-type: application/json
+
+{
+  
+}
+####
+GET http://localhost:5219/api/RelativeInformation HTTP/1.1
+Content-type: application/json
+
+{
+  
+}
+
+
+###
+
+POST http://localhost:5219/api/RelativeInformation
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidGVzdFVTZWVyMiIsIklEIjoiNWQ4MGYxODktN2I3Ny00NTFmLTg1N2YtNjY5MmZjMzRlNTZjIiwianRpIjoiMTJhODYxNGMtNjA3Ny00ZTc0LThmMmUtNGRhNjA0OWYzMDA3IiwiZXhwIjoxNzE1NzA2MjEzLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.pM9rZCvaxlgR9m-dqIc0NjUkjd1GL12buEr_SgYbxwo
+
+{
+"borrowerId": 39,
+"fullName": "Nguyễn Văn A",
+"phoneNumber": "0123456789",
+"email": "nguyenvana@example.com",
+"identityCardNumber": "123456789",
+"dateOfIssue": "1990-01-01T00:00:00",
+"placeOfIssue": "Hà Nội",
+"gender":1,
+"dateOfBirth": "1990-01-01T00:00:00",
+"hometown": "Hà Nội",
+"address": "Số 1, Đường ABC, Quận XYZ, Thành phố Hà Nội",
+"imageBack": "link-to-image-back",
+"imageFront": "link-to-image-front",
+"portrait": "link-to-portrait-image",
+"note": "Ghi chú cho người thân"
+    }
+###
+
+GET http://localhost:5219/api/LoanDone HTTP/1.1
+Content-type: application/json
+
+{
+  
+}
+####
+GET http://localhost:5219/api/LoanInformation HTTP/1.1
+Content-type: application/json
+
+{
+
+}
+
+
+####
+PUT http://localhost:5219/api/Product HTTP/1.1
+Content-type: application/json
+
+{
+    "Id": 3,
+    "Name":"Test API test",
+    "Description": "Description for Product 12",
+    "QuantityInStock": 22,
+    "Price": 1.992,
+    "Category": "Category 00",
+    "transparency": 0
+}
+
+####
+DELETE http://localhost:5219/api/User/1 HTTP/1.1
+Content-Type: application/json
+
+{}
+
+###
+POST http://localhost:5219/api/User 
+Content-Type: application/json
+
+{
+    "UserName": "nguyenvanA", 
+    "Email": "nguyenvana@example.com", 
+    "Password": "password123", 
+    "idRole": 1 
+}
+
+
+###
+POST http://localhost:5219/api/AccountHolderInformation 
+Content-Type: application/json
+
+{
+   {
+    "UserId": 1, 
+    "FullName": "Nguyễn Văn A",
+    "PhoneNumber": "0987654321",
+    "IdentityCardNumber": "123456789",
+    "DateOfIssue": "2000-01-01", 
+    "PlaceOfIssue": "Hà Nội",
+    "Gender": "Nam",
+    "DateOfBirth": "1990-01-01", 
+    "Hometown": "Hà Nội",
+    "Address": "Số 10, Phố Hòa Bình, Quận Hai Bà Trưng, Hà Nội",
+    "ImageBack": "link_to_image_back.jpg", 
+    "ImageFront": "link_to_image_front.jpg" 
+    }
+
+}
+###
+POST http://localhost:5219/api/Authenticate/login HTTP/1.1
+Content-Type:application/json
+
+{
+    "UserName": "vanday12",
+    "Password": "vanday12@123V"
+}
+###
+POST http://localhost:5219/api/BorrowerInformation
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidmFuZGF5MTIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjhkZmRjNTMxLTRhNWMtNDkxNi05NmU0LTUxZjdmNTA0NDYyYSIsImp0aSI6IjhhMDI5NzIzLTE0NTktNGE0Yy05NWY1LWQ4NTZmYWIxY2Q0ZCIsImV4cCI6MTcxOTYwODUwNCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAwIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0MjAwIn0.sIbUP6LjiQlUHXLYVvMTcgYD60kBZyCduNx8iM59yLk
+
+{
+  "FullName": "teslaij2222",
+  "PhoneNumber": "123456789",
+  "Email": "johndoe@example.com",
+  "IdentityCardNumber": "1234567890",
+  "DateOfIssue": "2024-05-05T00:00:00",
+  "PlaceOfIssue": "Some place",
+  "Gender": 0, 
+  "DateOfBirth": "1990-01-01T00:00:00",
+  "Hometown": "Hometown",
+  "Address": "123 Main Street",
+  "ImageBack": "base64-encoded-image-back",
+  "ImageFront": "base64-encoded-image-front",
+  "Portrait": "base64-encoded-portrait",
+  "LoanDone": 1, 
+  "Note": "Some note"
+}
+
+
+#####
+POST http://localhost:5219/api/LoanDone 
+Content-Type: application/json
+
+{
+    "UserId": "4e9538bc-920b-4238-b427-601f627a2dbf",
+    "LoanInformationId":3,
+    "BorrowerInformationId":2,
+    "Lender": "ABC Bank",
+    "LoanType": "Mortgage",
+    "LoanPurpose": "Home purchase",
+    "LoanAmount": 200000,
+    "InterestRate": 5.5,
+    "LoanTerm": 30,
+    "LoanDate": "2024-03-31T00:00:00",
+    "RepaymentDate": "2054-03-31T00:00:00"
+}
+
+###
+POST http://localhost:5219/api/LoanInformation 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidGVzdFVTZWVyMiIsIklEIjoiNWQ4MGYxODktN2I3Ny00NTFmLTg1N2YtNjY5MmZjMzRlNTZjIiwianRpIjoiZjE5NjllZjMtMjdkMy00MDBjLWFhOWItNzE4NjAwNzE2NzZiIiwiZXhwIjoxNzE3ODcyMTY3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.HFOWStv-2fcMEKtgukmJejtsKH47dvT7ZshDUNE7lmQ
+
+
+{
+    "LoanInformationName": "LoanInformation test1",
+    "BorrowerId": 42,
+    "Lender": "ABC Bank",
+    "LoanType": 0,
+    "LoanPurpose": "Home purchase",
+    "LoanAmount": 200000,
+    "InterestRate": 5.5,
+    "LoanTerm": 30,
+    "LoanDate": "2024-03-31T00:00:00",
+    "RepaymentDate": "2054-03-31T00:00:00",
+    "IsInstallment": 0,
+    "MonthlyPayment": 0,
+    "Note": "Some notes here"
+}
+
+
+
+###
+POST http://localhost:5219/api/Authenticate/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "Username": "vanday12",
+    "Password": "vanday12@123V",
+    "Email": "vanday12@123V"
+}
+
+
+###
+POST http://localhost:5219/api/Authenticate/register-admin HTTP/1.1
+Content-Type: application/json
+
+{
+    "Username": "Van14",
+    "Password": "Van14082004!",
+    "Email": "Hau12@gmail.com"
+}
+###
+GET http://localhost:5219/api/BorrowerInformation HTTP/1.1
+Content-Type: application/json
+
+{
+   
+}

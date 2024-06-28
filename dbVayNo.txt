@@ -1,0 +1,87 @@
+
+
+
+-----------user
+id 
+tên tài khoản
+email 
+mật khẩu
+role
+---------- thông tin chủ tài khoản 
+id
+id_user
+Họ và tên đầy đủ.
+sđt
+Số CCCD.
+Ngày cấp CCCD.
+Nơi cấp CCCD.
+Giới tính.
+Ngày tháng năm sinh.
+Quê quán.
+Địa chỉ thường trú.
+ảnh mặt sau
+ảnh mặt trước
+
+
+---------- thông tin Người vay 
+id
+id_user
+Họ và tên đầy đủ.
+sđt
+Số CCCD.
+Ngày cấp CCCD.
+Nơi cấp CCCD.
+Giới tính.
+Ngày tháng năm sinh.
+Quê quán.
+Địa chỉ thường trú.
+ảnh mặt sau
+ảnh mặt trước
+
+----thông tin khoản vay
+Công ty cho vay hoặc người cho vay
+Loại hình vay vốn
+Mục đích vay vốn
+Số tiền vay
+Lãi suất/năm
+Thời hạn vay
+Ngày vay
+Ngày trả
+---------- thông tin Người thân người vay
+id
+id_user
+id_người_vay
+ Họ và tên đầy đủ.
+sđt
+Số CCCD.
+Quê quán.
+Địa chỉ thường trú.
+
+-----hợp đồng vay
+id
+ảnh Giấy đề nghị vay vốn.
+ảnh Giấy tờ chứng minh thu nhập.
+ảnh Giấy tờ chứng minh mục đích vay vốn.
+ảnh Tài sản đảm bảo 
+id_ngăn_tầng_cất_hợp _đồng 
+-------------------
+ // ghi số tiền đã trả
+    public class LoanRepayment
+    {
+        [Key]
+        public int Id { get; set; }
+        
+        public int LoanInformationId { get; set; } // Liên kết với thông tin khoản vay
+
+        [ForeignKey("LoanInformationId")]
+        public virtual LoanInformation LoanInformationF { get; set; } // Tham chiếu đến thông tin khoản vay
+
+        public decimal AmountPaid { get; set; } // Số tiền đã trả
+        public DateTime PaymentDate { get; set; } // Ngày trả nợ
+    }
+
+
+
+
+
+
