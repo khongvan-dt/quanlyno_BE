@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -60,8 +61,24 @@ namespace quanLyNo.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] T value)
         {
-            var useId = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-            Console.WriteLine("UserId insert: " + useId);
+            var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+
+            if (string.IsNullOrEmpty(token))
+            {
+                return Unauthorized("Token is missing");
+            }
+
+            var handler = new JwtSecurityTokenHandler();
+            var jwtToken = handler.ReadToken(token) as JwtSecurityToken;
+            if (jwtToken == null)
+                return Unauthorized("Invalid token");
+
+            var userIdClaim = jwtToken.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+                return Unauthorized("UserId claim not found in token");
+
+            var userId = userIdClaim.Value;
+            Console.WriteLine("UserId insert: " + userId);
 
             foreach (var prop in typeof(T).GetProperties())
             {
@@ -73,32 +90,32 @@ namespace quanLyNo.Controllers
 
             try
             {
-            typeof(T).GetProperty("UserId").SetValue(value, useId);
+                typeof(T).GetProperty("UserId").SetValue(value, userId);
 
-            dc.Set<T>().AddRange(value);
-            var save = dc.SaveChanges();
-            if (save > 0)
-            {
-                Console.WriteLine("Giá trị được chèn thành công: " + value.ToString());
-                return Ok("Thêm Dữ Liệu Thành Công");
-            }
-            else
-            {
-                Console.WriteLine("Không thể chèn dữ liệu. Dữ liệu bị lỗi:");
-                foreach (var prop in typeof(T).GetProperties())
+                dc.Set<T>().Add(value);
+                var save = dc.SaveChanges();
+                if (save > 0)
                 {
-                    Console.WriteLine(prop.Name + ": " + prop.GetValue(value));
+                    Console.WriteLine("Giá trị được chèn thành công: " + value.ToString());
+                    return Ok("Thêm Dữ Liệu Thành Công");
                 }
-                return NotFound("Thêm Thất bại");
-            }
+                else
+                {
+                    Console.WriteLine("Không thể chèn dữ liệu. Dữ liệu bị lỗi:");
+                    foreach (var prop in typeof(T).GetProperties())
+                    {
+                        Console.WriteLine(prop.Name + ": " + prop.GetValue(value));
+                    }
+                    return NotFound("Thêm Thất bại");
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(Common.Constants.Message.InsertFAil);
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Lỗi khi thêm dữ liệu: " + ex.Message);
                 return BadRequest("Lỗi khi thêm dữ liệu: " + ex.Message);
             }
         }
+
         //
         // [HttpPost]
         // public IActionResult Create([FromBody] T value)
@@ -196,5 +213,7 @@ namespace quanLyNo.Controllers
             }
             return NotFound(Common.Constants.Message.InsertFAil);
         }
+
+
     }
 }
