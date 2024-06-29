@@ -28,3 +28,4 @@ _ReSharper*/
 # Others
 *~
 Migrations/
+wwwroot/uploads

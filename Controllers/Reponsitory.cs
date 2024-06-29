@@ -33,11 +33,59 @@ namespace quanLyNo.Controllers
         }
 
         // [Authorize]
+        // [HttpGet]
+        // public IEnumerable<T> Index()
+        // {
+        //     return dc.Set<T>().ToList();
+        // }
+
         [HttpGet]
         public IEnumerable<T> Index()
         {
-            return dc.Set<T>().ToList();
+            var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+
+            if (string.IsNullOrEmpty(token))
+            {
+                // Nếu token không hợp lệ, có thể xử lý phù hợp tại đây 
+                throw new UnauthorizedAccessException("Token is missing");
+            }
+
+            var handler = new JwtSecurityTokenHandler();
+            var jwtToken = handler.ReadToken(token) as JwtSecurityToken;
+            if (jwtToken == null)
+            {
+                throw new UnauthorizedAccessException("Invalid token");
+            }
+
+            var userIdClaim = jwtToken.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
+            if (userIdClaim == null)
+            {
+                throw new UnauthorizedAccessException("UserId claim not found in token");
+            }
+
+            var userId = userIdClaim.Value;
+            Console.WriteLine("UserId from token: " + userId);
+
+            // Lấy danh sách các đối tượng từ cơ sở dữ liệu chỉ khi UserId trùng khớp với UserId trong token
+            var entities = dc.Set<T>().ToList();
+            var filteredEntities = entities.Where(e => IsUserIdMatch(e, userId)).ToList();
+
+            return filteredEntities;
         }
+
+        // Phương thức hỗ trợ kiểm tra UserId của đối tượng và UserId từ token có khớp nhau hay không
+        private bool IsUserIdMatch(T entity, string userIdFromToken)
+        {
+            var userIdProperty = typeof(T).GetProperty("UserId");
+            if (userIdProperty != null)
+            {
+                var userIdValue = userIdProperty.GetValue(entity)?.ToString();
+                return userIdValue == userIdFromToken;
+            }
+            return false; // Nếu không có UserId hoặc không khớp, trả về false
+        }
+
+
 
         [HttpGet("{id}")]
         public T GetById(int id)
@@ -57,6 +105,7 @@ namespace quanLyNo.Controllers
             }
             return NotFound("Xóa Thất bại");
         }
+
 
         [HttpPost]
         public IActionResult Create([FromBody] T value)
@@ -79,6 +128,12 @@ namespace quanLyNo.Controllers
 
             var userId = userIdClaim.Value;
             Console.WriteLine("UserId insert: " + userId);
+
+            // Kiểm tra UserId không được null hoặc rỗng trước khi thêm vào cơ sở dữ liệu
+            if (string.IsNullOrEmpty(userId))
+            {
+                return BadRequest("UserId is null or empty. Cannot insert data.");
+            }
 
             foreach (var prop in typeof(T).GetProperties())
             {
@@ -116,51 +171,6 @@ namespace quanLyNo.Controllers
             }
         }
 
-        //
-        // [HttpPost]
-        // public IActionResult Create([FromBody] T value)
-        // {
-        //     // Lấy UserId từ Claims của người dùng đăng nhập
-        //     var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-        //     if (userIdClaim == null)
-        //     {
-        //         // Xử lý trường hợp không tìm thấy UserId trong Claims
-        //         return BadRequest("Không tìm thấy ID người dùng.");
-        //     }
-
-        //     var userId = userIdClaim.Value;
-        //     Console.WriteLine("UserId insert: " + userId);
-
-        //     // Thiết lập UserId cho đối tượng value
-        //     typeof(T).GetProperty("UserId").SetValue(value, userId);
-
-        //     // Kiểm tra và thêm dữ liệu vào cơ sở dữ liệu
-        //     try
-        //     {
-        //         dc.Set<T>().Add(value);
-        //         var save = dc.SaveChanges();
-        //         if (save > 0)
-        //         {
-        //             Console.WriteLine("Giá trị được chèn thành công: " + value.ToString());
-        //             return Ok("Thêm Dữ Liệu Thành Công");
-        //         }
-        //         else
-        //         {
-        //             Console.WriteLine("Không thể chèn dữ liệu. Dữ liệu bị lỗi:");
-        //             foreach (var prop in typeof(T).GetProperties())
-        //             {
-        //                 Console.WriteLine(prop.Name + ": " + prop.GetValue(value));
-        //             }
-        //             return NotFound("Thêm Thất bại");
-        //         }
-        //     }
-        //     catch (Exception ex)
-        //     {
-        //         Console.WriteLine(Common.Constants.Message.InsertFAil);
-        //         Console.WriteLine(ex.Message);
-        //         return BadRequest("Lỗi khi thêm dữ liệu: " + ex.Message);
-        //     }
-        // }
 
         [HttpPost("upload")]
         public IActionResult UploadImage([FromForm] IFormFile file)
