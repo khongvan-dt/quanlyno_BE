@@ -29,3 +29,6 @@ _ReSharper*/
 *~
 Migrations/
 wwwroot/uploads
+
+# Ignore testapi.http file
+testapi.http
