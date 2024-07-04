@@ -23,7 +23,7 @@ namespace quanLyNo.Controllers
     public class Repository<T> : ControllerBase, IRepository<T>
         where T : class
     {
-        private readonly IWebHostEnvironment _hostingEnvironment;
+        // private readonly IWebHostEnvironment _hostingEnvironment;
 
         ApplicationDbContext dc;
 
