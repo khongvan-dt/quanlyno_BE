@@ -10,10 +10,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using quanLyNo.Models;
-using quanLyNo.Common;
+using quanLyNo_BE.Models;
+using quanLyNo_BE.Common;
 
-namespace quanLyNo.controller
+namespace quanLyNo_BE.controller
 {
     [Route("api/[controller]")]
     [ApiController]

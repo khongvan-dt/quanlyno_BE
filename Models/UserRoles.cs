@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace quanLyNo.Models
+namespace quanLyNo_BE.Models
 
 {
     public static class UserRoles

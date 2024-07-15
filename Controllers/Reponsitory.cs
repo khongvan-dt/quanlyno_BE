@@ -13,10 +13,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.VisualBasic;
-using quanLyNo.Common;
-using quanLyNo.Models;
+using quanLyNo_BE.Common;
+using quanLyNo_BE.Models;
 
-namespace quanLyNo.Controllers
+namespace quanLyNo_BE.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

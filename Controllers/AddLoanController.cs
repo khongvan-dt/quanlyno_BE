@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using quanLyNo.Common;
-using quanLyNo.Models;
+using quanLyNo_BE.Common;
+using quanLyNo_BE.Models;
 
-namespace quanLyNo.Controllers
+namespace quanLyNo_BE.Controllers
 {
     [ApiController]
     [EnableCors()]

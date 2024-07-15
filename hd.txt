@@ -4,7 +4,7 @@
         "DefaultConnection": "Data Source=DESKTOP-HBD9I5Q\\TEW_SQLEXPRESS;Initial Catalog=HumanResourceManagement;Integrated Security=True;TrustServerCertificate=True;"
     }
 - kết nối db 
-	dotnet ef dbcontext scaffold "Data Source=DESKTOP-HBD9I5Q\TEW_SQLEXPRESS;Initial Catalog=quanlyno;Integrated Security=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models
+	dotnet ef dbcontext scaffold "Data Source=DESKTOP-HBD9I5Q\TEW_SQLEXPRESS;Initial Catalog=quanLyNo_BE;Integrated Security=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models
 -     HumanResourceManagementContext _context;
 
         public DepartmentsController()

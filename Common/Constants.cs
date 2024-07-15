@@ -1,4 +1,4 @@
-﻿namespace quanLyNo.Common
+﻿namespace quanLyNo_BE.Common
 {
     public static partial class Constants
     {

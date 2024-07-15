@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace quanLyNo.Models
+namespace quanLyNo_BE.Models
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {

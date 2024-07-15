@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-namespace quanLyNo.Controllers;
+namespace quanLyNo_BE.Controllers;
 public interface IRepository<T>
 {
     IEnumerable<T> Index();

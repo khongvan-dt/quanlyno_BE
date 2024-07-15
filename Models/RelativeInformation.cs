@@ -2,9 +2,8 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
-using static quanLyNo.Common.Enums;
 
-namespace quanLyNo.Models
+namespace quanLyNo_BE.Models
 {
     public class RelativeInformation
     {
@@ -23,7 +22,7 @@ namespace quanLyNo.Models
         public DateTime DateOfIssue { get; set; } // Ngày cấp CCCD hoặc CMND
         public string? PlaceOfIssue { get; set; } // Nơi cấp CCCD hoặc CMND
         [Required]
-        public Gender Gender { get; set; } // Giới tính của người thân người vay
+        public int Gender { get; set; } // Giới tính của người thân người vay
         public DateTime DateOfBirth { get; set; } // Ngày tháng năm sinh của người thân người vay
         [Required]
         public string Hometown { get; set; } // Quê quán của người thân người vay

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
-namespace quanLyNo.Models
+namespace quanLyNo_BE.Models
 {
     public class LoginModel
     {

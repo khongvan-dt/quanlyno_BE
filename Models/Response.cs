@@ -1,4 +1,4 @@
-namespace quanLyNo.Models
+namespace quanLyNo_BE.Models
 {
     public class Response
     {

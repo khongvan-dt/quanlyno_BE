@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace quanLyNo.Models
+namespace quanLyNo_BE.Models
 {
     public class LoanContract
     {

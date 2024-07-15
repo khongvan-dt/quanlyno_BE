@@ -1,11 +1,11 @@
-using quanLyNo.Models;
+using quanLyNo_BE.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace quanLyNo.Controllers
+namespace quanLyNo_BE.Controllers
 {
     [ApiController]
     [EnableCors()]

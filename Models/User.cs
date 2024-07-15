@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace quanLyNo.Models
+namespace quanLyNo_BE.Models
 {
     public class User
     {
