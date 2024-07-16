@@ -18,7 +18,6 @@ namespace quanLyNo_BE.Models
         public string? Note { get; set; } // Note       
         [ForeignKey("UserId")]
          public virtual IdentityUser UserIdF { get; set; }
-
         [ForeignKey("BorrowerInformationId")]
         public virtual BorrowerInformation BorrowerInformationIdF { get; set; }
         [ForeignKey("LoanInformationId")]

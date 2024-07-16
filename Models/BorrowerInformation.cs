@@ -15,10 +15,9 @@ namespace quanLyNo_BE.Models
         public string FullName { get; set; } // Họ và tên đầy đủ của người vay
         [Required]
         public string PhoneNumber { get; set; } // Số điện thoại của người vay
-        [Required]
         public string? Email { get; set; } // Email của người vay
         [Required]
-        public string? IdentityCardNumber { get; set; } // Số CCCD hoặc CMND của người vay
+        public string IdentityCardNumber { get; set; } // Số CCCD hoặc CMND của người vay
         public DateTime? DateOfIssue { get; set; } // Ngày cấp CCCD hoặc CMND
         public string? PlaceOfIssue { get; set; } // Nơi cấp CCCD hoặc CMND
         [Required]

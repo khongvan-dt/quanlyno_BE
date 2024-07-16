@@ -19,7 +19,7 @@ namespace quanLyNo_BE.Models
         public string? Email { get; set; } // Email của người thân người vay
         [Required]
         public string IdentityCardNumber { get; set; } // Số CCCD hoặc CMND của người thân người vay
-        public DateTime DateOfIssue { get; set; } // Ngày cấp CCCD hoặc CMND
+        public DateTime? DateOfIssue { get; set; } // Ngày cấp CCCD hoặc CMND
         public string? PlaceOfIssue { get; set; } // Nơi cấp CCCD hoặc CMND
         [Required]
         public int Gender { get; set; } // Giới tính của người thân người vay
@@ -35,7 +35,7 @@ namespace quanLyNo_BE.Models
         [Required]
         public string Portrait { get; set; } // Ảnh chân dung
         public string? Note { get; set; } // Note
-       [ForeignKey("UserId")]
+        [ForeignKey("UserId")]
         public virtual IdentityUser? UseuserIdForeignKeyrIdF { get; set; }
         [ForeignKey("BorrowerId")]
         public virtual BorrowerInformation? BorrowerIdF { get; set; }
