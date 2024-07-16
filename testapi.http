@@ -222,3 +222,13 @@ Content-Type: application/json
 {
    
 }
+
+
+
+###
+POST http://localhost:5219/api/ScanInformation HTTP/1.1
+Content-Type:application/json
+
+{
+    "imagePaths": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYCMjisEGRSJfbgVSZ5dyxwifc10Cfb8PXBQ&s",
+}
