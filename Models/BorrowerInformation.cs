@@ -34,7 +34,7 @@ namespace quanLyNo_BE.Models
         [Required]
         public string Portrait { get; set; } // Ảnh chân dung
         [Required]
-        public int LoanDone { get; set; } // Chả hết nợ hay chưa
+        public int LoanDone { get; set; } // hết nợ:0, còn nợ :1
         public string? Note { get; set; } // Note
 
         [ForeignKey("UserId")]
