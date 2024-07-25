@@ -12,7 +12,7 @@ namespace quanLyNo_BE.Models
         public string UserId { get; set; } // Mã người dùng (liên kết với bảng User)
         public int LoanInformationId { get; set; } // Mã thông tin khoản vay (liên kết với bảng LoanInformation)
         public int BorrowerInformationId { get; set; } // Liên kết với người vay
-        public decimal AmountPaid { get; set; } // Số tiền đã trả
+        public int AmountPaid { get; set; } // Số tiền đã trả
         public DateTime PaymentDate { get; set; } // Ngày trả
         public int? IsInstallment { get; set; } // Kiểu vay: true nếu vay trả góp, false nếu vay trả một cục
 

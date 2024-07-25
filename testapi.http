@@ -248,3 +248,25 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hc
     "CollateralImage": "Home purchase",
     "CompartmentId": "trong tủ đồ"
 }
+
+
+#####
+POST http://localhost:5219/api/LoanRepayment 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwianRpIjoiM2YzNDRiYmUtNjMwNC00ZGUwLWIzOGItMDdmNDczNmEyOGIyIiwic3ViIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwiZXhwIjoxNzIxNjY1Mjk2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.D_lQAHf2qYEMYiq0fGW82H0kFCJxfZsqgsj18m-CCHw
+
+{
+  "LoanInformationId": 1,
+  "BorrowerInformationId": 14,
+  "AmountPaid": 8000000, 
+  "PaymentDate": "2024-03-31T00:00:00",
+  "Note": "Home purchase"
+}
+####
+GET http://localhost:5219/api/BorrowerInformation/12 HTTP/1.1
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwianRpIjoiMTViMjEyOTMtMjg5ZC00Nzc3LTgyNjUtNWY5YTdkZWI1ZjI0Iiwic3ViIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwiZXhwIjoxNzIxNzE1NDI5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.sC5SC4R8DxBiABe65u48pEyrSOY-ZivahRVAhhpw4kI
+
+{
+
+}

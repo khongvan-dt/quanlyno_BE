@@ -28,7 +28,7 @@ namespace quanLyNo_BE.Models
     [Required]
     public DateTime RepaymentDate { get; set; } // Ngày trả
     [Required]
-    public int IsInstallment { get; set; } // Kiểu vay: 1 nếu vay trả góp, 2 nếu vay trả một cục
+    public int IsInstallment { get; set; } // Kiểu vay: 0 nếu vay trả góp, 1 nếu vay trả một cục
     public float? MonthlyPayment { get; set; } // Số tiền gốc cần trả mỗi tháng
     public float Interest { get; set; } // Số tiền lãi cần trả mỗi tháng
     public string? Note { get; set; } // Note       
