@@ -26,29 +26,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hc
 {
    
 }
-###
 
-POST http://localhost:5219/api/RelativeInformation
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwianRpIjoiZjg0MWU1ZDYtZjYwZi00Y2U0LTk2NjYtZTY5MzJiMzg2N2E3Iiwic3ViIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwiZXhwIjoxNzE5OTQ0ODYyLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ._NDaA5FHbJ-adQoaiWw8cjBqsXDw1Z7moaZ4jVKMatw
-
-{
-"borrowerId": 12,
-"fullName": "Nguyễn Văn A",
-"phoneNumber": "0123456789",
-"email": "nguyenvana@example.com",
-"identityCardNumber": "123456789",
-"dateOfIssue": "1990-01-01T00:00:00",
-"placeOfIssue": "Hà Nội",
-"gender":1,
-"dateOfBirth": "1990-01-01T00:00:00",
-"hometown": "Hà Nội",
-"address": "Số 1, Đường ABC, Quận XYZ, Thành phố Hà Nội",
-"imageBack": "link-to-image-back",
-"imageFront": "link-to-image-front",
-"portrait": "link-to-portrait-image",
-"note": "Ghi chú cho người thân"
-    }
 ###
 
 GET http://localhost:5219/api/LoanDone HTTP/1.1
@@ -119,21 +97,14 @@ Content-Type: application/json
     }
 
 }
-###
-POST http://localhost:5219/api/Authenticate/login HTTP/1.1
-Content-Type:application/json
 
-{
-    "UserName": "admin11",
-    "Password": "Admin11@123V"
-}
 ###
 POST http://localhost:5219/api/BorrowerInformation
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwianRpIjoiNzNkOTczY2MtODBlMy00NjUzLWExYmItNjc2YzBmOGM2NjNiIiwic3ViIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwiZXhwIjoxNzE5NzQ3MzgwLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.bD0SzUDenUFWDf7pXCkXgqJs8ZPJG1f_LIqD34DiUVw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwianRpIjoiZGUxOTg5MzMtYjU1MC00YmFhLWI3NDktM2E2NWZiMzU0ZWI0Iiwic3ViIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwiZXhwIjoxNzIyMjMwMTI3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.jojTQP05q7lLfHs7mzaDVtydIJo2dW0cvO5dLCTRlLg
 
 {
-  "FullName": "teslaij2222",
+  "FullName": "apiaaa",
   "PhoneNumber": "123456789",
   "Email": "johndoe@example.com",
   "IdentityCardNumber": "1234567890",
@@ -172,16 +143,16 @@ Content-Type: application/json
 ###
 POST http://localhost:5219/api/LoanInformation 
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidGVzdFVTZWVyMiIsIklEIjoiNWQ4MGYxODktN2I3Ny00NTFmLTg1N2YtNjY5MmZjMzRlNTZjIiwianRpIjoiZjE5NjllZjMtMjdkMy00MDBjLWFhOWItNzE4NjAwNzE2NzZiIiwiZXhwIjoxNzE3ODcyMTY3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.HFOWStv-2fcMEKtgukmJejtsKH47dvT7ZshDUNE7lmQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwianRpIjoiZGUxOTg5MzMtYjU1MC00YmFhLWI3NDktM2E2NWZiMzU0ZWI0Iiwic3ViIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwiZXhwIjoxNzIyMjMwMTI3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.jojTQP05q7lLfHs7mzaDVtydIJo2dW0cvO5dLCTRlLg
 
 
 {
-    "LoanInformationName": "LoanInformation test1",
-    "BorrowerId": 42,
+    "LoanInformationName": "ttaaaahhhhh",
+    "BorrowerId": 4,
     "Lender": "ABC Bank",
     "LoanType": 0,
     "LoanPurpose": "Home purchase",
-    "LoanAmount": 200000,
+    "LoanAmount": 800000,
     "InterestRate": 5.5,
     "LoanTerm": 30,
     "LoanDate": "2024-03-31T00:00:00",
@@ -216,7 +187,7 @@ Content-Type: application/json
 ###
 
 ###
-DELETE  http://localhost:5219/api/BorrowerInformation/9 HTTP/1.1
+DELETE  http://localhost:5219/api/BorrowerInformation/2 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -249,23 +220,40 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hc
     "CompartmentId": "trong tủ đồ"
 }
 
-
-#####
-POST http://localhost:5219/api/LoanRepayment 
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwianRpIjoiM2YzNDRiYmUtNjMwNC00ZGUwLWIzOGItMDdmNDczNmEyOGIyIiwic3ViIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwiZXhwIjoxNzIxNjY1Mjk2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.D_lQAHf2qYEMYiq0fGW82H0kFCJxfZsqgsj18m-CCHw
+###
+POST http://localhost:5219/api/Authenticate/login HTTP/1.1
+Content-Type:application/json
 
 {
-  "LoanInformationId": 1,
-  "BorrowerInformationId": 14,
-  "AmountPaid": 8000000, 
-  "PaymentDate": "2024-03-31T00:00:00",
-  "Note": "Home purchase"
+    "UserName": "admin11",
+    "Password": "Admin11@123V"
 }
+
+#####
+POST http://localhost:5219/api/CreateLoanRepayment
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwianRpIjoiOTU0ODgwNjEtOWVhNC00MzNiLWJhNjgtZWQxMDQ4OGJiY2UzIiwic3ViIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwiZXhwIjoxNzIyMjUzNDc2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.gGOfO9jqCMSc0lvyR2LXOelEBCELiYa9Me7HKSoFphA
+
+{
+  "LoanInformationId": 4,
+  "BorrowerInformationId": 4,
+  "AmountPaid": 300000, 
+  "PaymentDate": "2024-03-31T00:00:00",
+  "Note": "Home purchase222"
+}
+
 ####
 GET http://localhost:5219/api/BorrowerInformation/12 HTTP/1.1
 Content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwianRpIjoiMTViMjEyOTMtMjg5ZC00Nzc3LTgyNjUtNWY5YTdkZWI1ZjI0Iiwic3ViIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwiZXhwIjoxNzIxNzE1NDI5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.sC5SC4R8DxBiABe65u48pEyrSOY-ZivahRVAhhpw4kI
+
+{
+
+}
+####
+GET http://localhost:5219/api/LoanDone HTTP/1.1
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwianRpIjoiZGUxOTg5MzMtYjU1MC00YmFhLWI3NDktM2E2NWZiMzU0ZWI0Iiwic3ViIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwiZXhwIjoxNzIyMjMwMTI3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.jojTQP05q7lLfHs7mzaDVtydIJo2dW0cvO5dLCTRlLg
 
 {
 

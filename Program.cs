@@ -2,15 +2,13 @@ using System;
 using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using quanLyNo_BE.Models;
-using Microsoft.OpenApi.Models;
+using quanLyNo_BE.Services;
 
 // var builder = WebApplication.CreateBuilder(args);
 // var configuration = builder.Configuration;
@@ -111,7 +109,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 );
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders(); 
+    .AddDefaultTokenProviders();
 
 // Configure Authentication
 builder.Services.AddAuthentication(options =>
@@ -138,6 +136,7 @@ builder.Services.AddAuthorization();
 
 // Add Controllers services
 builder.Services.AddControllers();
+builder.Services.AddScoped<LoanRepaymentService>();
 
 var app = builder.Build();
 

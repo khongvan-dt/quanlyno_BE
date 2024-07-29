@@ -15,7 +15,6 @@ namespace quanLyNo_BE.Models
         public int AmountPaid { get; set; } // Số tiền đã trả
         public DateTime PaymentDate { get; set; } // Ngày trả
         public int? IsInstallment { get; set; } // Kiểu vay: true nếu vay trả góp, false nếu vay trả một cục
-
         public string? Note { get; set; } // Note
 
         [ForeignKey("LoanInformationId")]

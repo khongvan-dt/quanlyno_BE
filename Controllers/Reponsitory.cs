@@ -3,16 +3,9 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.VisualBasic;
 using quanLyNo_BE.Common;
 using quanLyNo_BE.Models;
 
@@ -23,8 +16,6 @@ namespace quanLyNo_BE.Controllers
     public class Repository<T> : ControllerBase, IRepository<T>
         where T : class
     {
-        // private readonly IWebHostEnvironment _hostingEnvironment;
-
         ApplicationDbContext dc;
 
         public Repository(ApplicationDbContext dc2)
@@ -47,20 +38,20 @@ namespace quanLyNo_BE.Controllers
             if (string.IsNullOrEmpty(token))
             {
                 // Nếu token không hợp lệ, có thể xử lý phù hợp tại đây 
-                throw new UnauthorizedAccessException("Token is missing");
+                throw new UnauthorizedAccessException(Constants.Message.TokenMissing);
             }
 
             var handler = new JwtSecurityTokenHandler();
             var jwtToken = handler.ReadToken(token) as JwtSecurityToken;
             if (jwtToken == null)
             {
-                throw new UnauthorizedAccessException("Invalid token");
+                throw new UnauthorizedAccessException(Constants.Message.InvalidToken);
             }
 
             var userIdClaim = jwtToken.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
             if (userIdClaim == null)
             {
-                throw new UnauthorizedAccessException("UserId claim not found in token");
+                throw new UnauthorizedAccessException(Constants.Message.UserIdFoundInToken);
             }
 
             var userId = userIdClaim.Value;
@@ -85,46 +76,27 @@ namespace quanLyNo_BE.Controllers
             return false; // Nếu không có UserId hoặc không khớp, trả về false
         }
 
-
-
-        [HttpGet("{id}")]
-        public T GetById(int id)
-        {
-            return dc.Set<T>().Find(id);
-        }
-
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
-        {
-            var item = dc.Set<T>().Find(id);
-            dc.Set<T>().Remove(item);
-            var save = dc.SaveChanges();
-            if (save > 0)
-            {
-                return Ok("Xóa Dữ Liệu Thành Công");
-            }
-            return NotFound("Xóa Thất bại");
-        }
-
-
         [HttpPost]
         public IActionResult Create([FromBody] T value)
+
         {
             var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
 
             if (string.IsNullOrEmpty(token))
             {
-                return Unauthorized("Token is missing");
+                return Unauthorized(Constants.Message.TokenMissing);
             }
 
             var handler = new JwtSecurityTokenHandler();
             var jwtToken = handler.ReadToken(token) as JwtSecurityToken;
             if (jwtToken == null)
-                return Unauthorized("Invalid token");
+                return Unauthorized(Constants.Message.InvalidToken);
 
             var userIdClaim = jwtToken.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
+
             if (userIdClaim == null)
-                return Unauthorized("UserId claim not found in token");
+                return Unauthorized(Constants.Message.UserIdFoundInToken);
+
 
             var userId = userIdClaim.Value;
             Console.WriteLine("UserId insert: " + userId);
@@ -132,7 +104,7 @@ namespace quanLyNo_BE.Controllers
             // Kiểm tra UserId không được null hoặc rỗng trước khi thêm vào cơ sở dữ liệu
             if (string.IsNullOrEmpty(userId))
             {
-                return BadRequest("UserId is null or empty. Cannot insert data.");
+                return BadRequest(Constants.Message.UserIdEmpty);
             }
 
             foreach (var prop in typeof(T).GetProperties())
@@ -151,25 +123,45 @@ namespace quanLyNo_BE.Controllers
                 var save = dc.SaveChanges();
                 if (save > 0)
                 {
-                    Console.WriteLine("Giá trị được chèn thành công: " + value.ToString());
-                    return Ok("Thêm Dữ Liệu Thành Công");
+                    Console.WriteLine(Constants.Message.CreatedSuccessfully + value.ToString());
+                    return Ok(Constants.Message.CreatedSuccessfully);
                 }
                 else
                 {
-                    Console.WriteLine("Không thể chèn dữ liệu. Dữ liệu bị lỗi:");
+
+                    Console.WriteLine(Constants.Message.Createfailure);
                     foreach (var prop in typeof(T).GetProperties())
                     {
                         Console.WriteLine(prop.Name + ": " + prop.GetValue(value));
                     }
-                    return NotFound("Thêm Thất bại");
+                    return NotFound(Constants.Message.Createfailure);
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Lỗi khi thêm dữ liệu: " + ex.Message);
-                return BadRequest("Lỗi khi thêm dữ liệu: " + ex.Message);
+                return BadRequest(Constants.Message.Createfailure + ex.Message);
             }
         }
+
+        [HttpGet("{id}")]
+        public T GetById(int id)
+        {
+            return dc.Set<T>().Find(id);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var item = dc.Set<T>().Find(id);
+            dc.Set<T>().Remove(item);
+            var save = dc.SaveChanges();
+            if (save > 0)
+            {
+                return Ok(Constants.Message.DeletedSuccessfully);
+            }
+            return NotFound(Constants.Message.DeletedFailure);
+        }
+
 
 
         [HttpPost("upload")]
@@ -203,7 +195,7 @@ namespace quanLyNo_BE.Controllers
                 }
                 else
                 {
-                    return BadRequest(Common.Constants.Message.NoFileUploaded);
+                    return BadRequest(Constants.Message.NoFileUploaded);
                 }
             }
             catch (Exception ex)
@@ -219,9 +211,9 @@ namespace quanLyNo_BE.Controllers
             var save = dc.SaveChanges();
             if (save > 0)
             {
-                return Ok(Common.Constants.Message.ValueInsertedSuccessfully);
+                return Ok(Constants.Message.ValueInsertedSuccessfully);
             }
-            return NotFound(Common.Constants.Message.InsertFAil);
+            return NotFound(Constants.Message.InsertFAil);
         }
 
 

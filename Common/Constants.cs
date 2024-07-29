@@ -6,8 +6,11 @@
         {
             public const string NotFound = "Not found.";
             public const string CreatedSuccessfully = "Created successfully.";
-            public const string UpdatedSuccessfully = "Updated successfully.";
+            public const string Createfailure = "Created failure.";
             public const string DeletedSuccessfully = "Deleted successfully.";
+
+            public const string UpdatedSuccessfully = "Updated successfully.";
+            public const string DeletedFailure = "Deleted Failure.";
             public const string DeleteAllSuccessfully = "All items deleted successfully.";
             public const string ServerError = "Server error occurred.";
             public const string PaymentDate = "Invalid PaymentDate data";
@@ -35,6 +38,15 @@
             public const string InsertFAil = "More Failure:";
             public const string ValueInsertedSuccessfully = "Value inserted successfully:";
             public const string NoFileUploaded = "No file uploaded!";
+            public const string AmountPaidGreater = "Amount Paid cannot be greater than Loan Amount.";
+            public const string LoanInformationIdDoesNotExist = "LoanInformation not found with the specified id.";
+            public const string UserIdEmpty = "UserId is null or empty. Cannot insert data.";
+            public const string UserIdFoundInToken = "UserId claim not found in token";
+            public const string InvalidToken = "Invalid token";
+                        public const string TokenMissing = "Token is missing";
+
+
+
         }
     }
 }
