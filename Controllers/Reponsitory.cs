@@ -13,28 +13,35 @@ namespace quanLyNo_BE.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class Repository<T> : ControllerBase, IRepository<T>
+    public class Repository<T> : IRepository<T>
         where T : class
     {
         ApplicationDbContext dc;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public Repository(ApplicationDbContext dc2)
+        public Repository(ApplicationDbContext dc2, IHttpContextAccessor httpContextAccessor)
         {
             dc = dc2;
+            _httpContextAccessor = httpContextAccessor;
+
         }
 
-        // [Authorize]
-        // [HttpGet]
-        // public IEnumerable<T> Index()
-        // {
-        //     return dc.Set<T>().ToList();
-        // }
+        // Phương thức hỗ trợ kiểm tra UserId của đối tượng và UserId từ token có khớp nhau hay không
+        private bool IsUserIdMatch(T entity, string userIdFromToken)
+        {
+            var userIdProperty = typeof(T).GetProperty("UserId");
+            if (userIdProperty != null)
+            {
+                var userIdValue = userIdProperty.GetValue(entity)?.ToString();
+                return userIdValue == userIdFromToken;
+            }
+            return false; // Nếu không có UserId hoặc không khớp, trả về false
+        }
 
         [HttpGet]
         public IEnumerable<T> Index()
         {
-            var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
-
+            var token = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             if (string.IsNullOrEmpty(token))
             {
                 // Nếu token không hợp lệ, có thể xử lý phù hợp tại đây 
@@ -64,38 +71,29 @@ namespace quanLyNo_BE.Controllers
             return filteredEntities;
         }
 
-        // Phương thức hỗ trợ kiểm tra UserId của đối tượng và UserId từ token có khớp nhau hay không
-        private bool IsUserIdMatch(T entity, string userIdFromToken)
-        {
-            var userIdProperty = typeof(T).GetProperty("UserId");
-            if (userIdProperty != null)
-            {
-                var userIdValue = userIdProperty.GetValue(entity)?.ToString();
-                return userIdValue == userIdFromToken;
-            }
-            return false; // Nếu không có UserId hoặc không khớp, trả về false
-        }
 
         [HttpPost]
         public IActionResult Create([FromBody] T value)
-
         {
-            var token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
 
+            var token = _httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", ""); // cho nay khong check null??????
+
+            Console.WriteLine("Du lieu: {0}", value);
+            Console.WriteLine("Headers: {0}", token); 
             if (string.IsNullOrEmpty(token))
             {
-                return Unauthorized(Constants.Message.TokenMissing);
+                return new JsonResult(new { message = Constants.Message.TokenMissing });
             }
 
             var handler = new JwtSecurityTokenHandler();
             var jwtToken = handler.ReadToken(token) as JwtSecurityToken;
             if (jwtToken == null)
-                return Unauthorized(Constants.Message.InvalidToken);
+                return new JsonResult(new { message = Constants.Message.InvalidToken });
 
             var userIdClaim = jwtToken.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
 
             if (userIdClaim == null)
-                return Unauthorized(Constants.Message.UserIdFoundInToken);
+                return new JsonResult(new { message = Constants.Message.UserIdFoundInToken });
 
 
             var userId = userIdClaim.Value;
@@ -104,7 +102,7 @@ namespace quanLyNo_BE.Controllers
             // Kiểm tra UserId không được null hoặc rỗng trước khi thêm vào cơ sở dữ liệu
             if (string.IsNullOrEmpty(userId))
             {
-                return BadRequest(Constants.Message.UserIdEmpty);
+                return new JsonResult(new { message = Constants.Message.UserIdEmpty });
             }
 
             foreach (var prop in typeof(T).GetProperties())
@@ -124,7 +122,7 @@ namespace quanLyNo_BE.Controllers
                 if (save > 0)
                 {
                     Console.WriteLine(Constants.Message.CreatedSuccessfully + value.ToString());
-                    return Ok(Constants.Message.CreatedSuccessfully);
+                    return new JsonResult(new { message = Constants.Message.CreatedSuccessfully });
                 }
                 else
                 {
@@ -134,12 +132,12 @@ namespace quanLyNo_BE.Controllers
                     {
                         Console.WriteLine(prop.Name + ": " + prop.GetValue(value));
                     }
-                    return NotFound(Constants.Message.Createfailure);
+                    return new JsonResult(new { message = Constants.Message.Createfailure });
                 }
             }
             catch (Exception ex)
             {
-                return BadRequest(Constants.Message.Createfailure + ex.Message);
+                return new JsonResult(new { message = Constants.Message.Createfailure + ex.Message });
             }
         }
 
@@ -157,9 +155,9 @@ namespace quanLyNo_BE.Controllers
             var save = dc.SaveChanges();
             if (save > 0)
             {
-                return Ok(Constants.Message.DeletedSuccessfully);
+                return new JsonResult(new { message = Constants.Message.DeletedSuccessfully });
             }
-            return NotFound(Constants.Message.DeletedFailure);
+            return new JsonResult(new { message = Constants.Message.DeletedFailure });
         }
 
 
@@ -191,16 +189,16 @@ namespace quanLyNo_BE.Controllers
                     // In ra đường dẫn của ảnh
                     var imageUrl = Path.Combine("/uploads", uniqueFileName);
                     // Console.WriteLine("Đường dẫn ảnh: " + imageUrl);
-                    return Ok(new { imagePath = "/uploads/" + uniqueFileName });
+                    return new JsonResult(new { message = new { imagePath = "/uploads/" + uniqueFileName } });
                 }
                 else
                 {
-                    return BadRequest(Constants.Message.NoFileUploaded);
+                    return new JsonResult(new { message = Constants.Message.NoFileUploaded });
                 }
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+                return new JsonResult(new { message = StatusCodes.Status500InternalServerError, ex.Message });
             }
         }
 
@@ -211,9 +209,9 @@ namespace quanLyNo_BE.Controllers
             var save = dc.SaveChanges();
             if (save > 0)
             {
-                return Ok(Constants.Message.ValueInsertedSuccessfully);
+                return new JsonResult(new { message = Constants.Message.ValueInsertedSuccessfully });
             }
-            return NotFound(Constants.Message.InsertFAil);
+            return new JsonResult(new { message = Constants.Message.InsertFAil });
         }
 
 

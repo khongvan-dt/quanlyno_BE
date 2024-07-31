@@ -133,6 +133,7 @@ builder.Services.AddAuthentication(options =>
 
 // Add Authorization services
 builder.Services.AddAuthorization();
+builder.Services.AddHttpContextAccessor();
 
 // Add Controllers services
 builder.Services.AddControllers();

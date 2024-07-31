@@ -1,4 +1,5 @@
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using quanLyNo_BE.Common;
 using quanLyNo_BE.Controllers;
@@ -10,42 +11,40 @@ namespace quanLyNo_BE.Services
     {
         private readonly ApplicationDbContext dc;
 
-        public LoanRepaymentService(ApplicationDbContext dc) : base(dc)
+        public LoanRepaymentService(ApplicationDbContext dc,IHttpContextAccessor httpContextAccessor) : base(dc,httpContextAccessor)
         {
             this.dc = dc;
         }
-        public IActionResult CreateLoanRepaymentService(LoanRepayment loanRepaymentItem)
+
+        public string ValidateLoanRepayment(LoanRepayment loanRepaymentItem)
         {
             if (loanRepaymentItem == null)
             {
-                return BadRequest("LoanRepayment item is null.");
+                return "LoanRepayment item is null.";
             }
 
-            // Lấy LoanInformationId từ loanRepaymentItem
             var loanInformation = dc.Set<LoanInformation>()
                 .FirstOrDefault(l => l.Id == loanRepaymentItem.LoanInformationId);
 
             if (loanInformation == null)
             {
-                return BadRequest("LoanInformation not found with the specified LoanInformationId.");
+                return "LoanInformation not found with the specified LoanInformationId.";
             }
 
             if (loanRepaymentItem.AmountPaid > loanInformation.LoanAmount)
             {
-                return BadRequest(Constants.Message.AmountPaidGreater);
+                return Constants.Message.AmountPaidGreater;
             }
 
-            if (ModelState.IsValid)
-            {
-                // Gọi phương thức Create từ lớp Repository
-                Create(loanRepaymentItem);
-                return BadRequest(Constants.Message.CreatedSuccessfully);
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
+            return null;
+        }
+
+        public IActionResult CreateLoanRepaymentService(LoanRepayment loanRepaymentItem)
+        {
+            Create(loanRepaymentItem);
+            return new JsonResult(new { message = Constants.Message.CreatedSuccessfully });
         }
     }
-
 }
+
+

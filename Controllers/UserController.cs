@@ -14,10 +14,11 @@ namespace quanLyNo_BE.Controllers
     {
         private readonly ApplicationDbContext dc;
 
-        public UserController(ApplicationDbContext context) : base(context)
+        public UserController(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor) : base(context, httpContextAccessor)
         {
             dc = context;
-        }
+        }        private readonly IHttpContextAccessor _httpContextAccessor;
+
 
         // [HttpPost]
         // [Route("login")]
@@ -26,17 +27,17 @@ namespace quanLyNo_BE.Controllers
         //     var user = await dc.Users.SingleOrDefaultAsync(u => u.UserName == login.UserName);
         //     if (user == null)
         //     {
-        //         return Unauthorized();
+        //         return new  JsonResult(new { message = );
         //     }
         //     if (user.Password == login.Password)
         //     {
         //         int? userId = HttpContext.Session.GetInt32("UserId");
         //         string userName = HttpContext.Session.GetString("UserName");
-        //         return Ok(user);
+        //         return new  JsonResult(new { message = user);
         //     }
         //     else
         //     {
-        //         return Unauthorized();
+        //         return new  JsonResult(new { message = );
         //     }
         // }
         [HttpPost]
@@ -47,18 +48,18 @@ namespace quanLyNo_BE.Controllers
 
             if (user == null)
             {
-                return Unauthorized(new { code = 401, msg = "Authentication error: Invalid username or password.", error = "exceptions.UserAuthError" });
+                return new  JsonResult(new { message = new { code = 401, msg = "Authentication error: Invalid username or password.", error = "exceptions.UserAuthError" }});
             }
 
             if (user.Password == login.Password)
             {
-                HttpContext.Session.SetInt32("UserId", user.Id);
-                HttpContext.Session.SetString("UserName", user.UserName);
-                return Ok(user);
+                _httpContextAccessor.HttpContext.Session.SetInt32("UserId", user.Id);
+                _httpContextAccessor.HttpContext.Session.SetString("UserName", user.UserName);
+                return new  JsonResult(new { message = user});
             }
             else
             {
-                return Unauthorized(new { code = 401, msg = "Authentication error: Invalid username or password.", error = "exceptions.UserAuthError" });
+                return new  JsonResult(new { message = new { code = 401, msg = "Authentication error: Invalid username or password.", error = "exceptions.UserAuthError" }});
             }
         }
 

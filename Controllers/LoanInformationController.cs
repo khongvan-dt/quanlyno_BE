@@ -1,6 +1,7 @@
 using quanLyNo_BE.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace quanLyNo_BE.Controllers
 {
@@ -9,7 +10,7 @@ namespace quanLyNo_BE.Controllers
     [Route("api/[controller]")]
     public class LoanInformationController : Repository<LoanInformation>
     {
-        public LoanInformationController(ApplicationDbContext dc) : base(dc)
+        public LoanInformationController(ApplicationDbContext dc, IHttpContextAccessor httpContextAccessor) : base(dc, httpContextAccessor)
         {
         }
     }
