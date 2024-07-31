@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using quanLyNo_BE.Models;
 using quanLyNo_BE.Services;
+using System.Linq; 
 
 namespace quanLyNo_BE.Controllers
 {
     [ApiController]
     [EnableCors()]
-    [Route("api")]
+    [Route("api/[controller]")]
     public class LoanRepaymentController : ControllerBase
     {
         private readonly LoanRepaymentService _loanRepaymentService;
@@ -18,7 +18,7 @@ namespace quanLyNo_BE.Controllers
             _loanRepaymentService = loanRepaymentService;
         }
 
-        [HttpPost("CreateLoanRepayment")]
+        [HttpPost]
         public IActionResult CreateLoanRepayment([FromBody] LoanRepayment loanRepaymentItem)
         {
             if (!ModelState.IsValid)
@@ -26,9 +26,18 @@ namespace quanLyNo_BE.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = _loanRepaymentService.CreateLoanRepaymentService(loanRepaymentItem);
-            return result;
+            return _loanRepaymentService.CreateLoanRepaymentService(loanRepaymentItem);
+        }
+
+        [HttpGet]
+        public IActionResult GetLoanRepayment()
+        {
+            var result = _loanRepaymentService.GetLoanRepayment();
+            if (result == null || !result.Any())
+            {
+                return NotFound(new { message = "No data found." });
+            }
+            return Ok(result);
         }
     }
 }
-

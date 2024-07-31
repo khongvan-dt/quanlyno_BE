@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using quanLyNo_BE.Common;
 using quanLyNo_BE.Controllers;
 using quanLyNo_BE.Models;
+using System.Collections.Generic;  
+
 
 namespace quanLyNo_BE.Services
 {
@@ -11,7 +13,7 @@ namespace quanLyNo_BE.Services
     {
         private readonly ApplicationDbContext dc;
 
-        public LoanRepaymentService(ApplicationDbContext dc,IHttpContextAccessor httpContextAccessor) : base(dc,httpContextAccessor)
+        public LoanRepaymentService(ApplicationDbContext dc, IHttpContextAccessor httpContextAccessor) : base(dc, httpContextAccessor)
         {
             this.dc = dc;
         }
@@ -41,8 +43,18 @@ namespace quanLyNo_BE.Services
 
         public IActionResult CreateLoanRepaymentService(LoanRepayment loanRepaymentItem)
         {
+            var validationResult = ValidateLoanRepayment(loanRepaymentItem);
+            if (validationResult != null)
+            {
+                return new JsonResult(new { message = validationResult });
+            }
+            
             Create(loanRepaymentItem);
             return new JsonResult(new { message = Constants.Message.CreatedSuccessfully });
+        }
+        public IEnumerable<LoanRepayment> GetLoanRepayment()
+        {
+            return Index();
         }
     }
 }
