@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using quanLyNo_BE.Repository;
 
 namespace quanLyNo_BE.Controllers
 {

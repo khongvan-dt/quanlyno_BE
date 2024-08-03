@@ -6,9 +6,7 @@ public interface IRepository<T>
 {
     IEnumerable<T> Index();
     T GetById(int id);
-    public IActionResult Delete(int id);
-    // public IActionResult Create(T[] entity);
-    public IActionResult Create(T entity);
-
-    public IActionResult Update(T entity);
+    public void Delete(int id);
+    public void Create(T entity);
+    public void Update(T entity);
 }

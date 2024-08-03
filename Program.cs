@@ -138,6 +138,7 @@ builder.Services.AddHttpContextAccessor();
 // Add Controllers services
 builder.Services.AddControllers();
 builder.Services.AddScoped<LoanRepaymentService>();
+builder.Services.AddScoped<BorrowerInformationService>();
 
 var app = builder.Build();
 

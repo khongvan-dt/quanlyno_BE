@@ -44,7 +44,9 @@
             public const string UserIdFoundInToken = "UserId claim not found in token";
             public const string InvalidToken = "Invalid token";
             public const string TokenMissing = "Token is missing";
-             public const string NoDataFound = "No data found.";
+            public const string NoDataFound = "No data found.";
+            public const string DataListSusses = "Get data Susses";
+
 
 
 

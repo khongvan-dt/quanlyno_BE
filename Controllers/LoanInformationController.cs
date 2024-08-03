@@ -2,6 +2,7 @@ using quanLyNo_BE.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using quanLyNo_BE.Repository;
 
 namespace quanLyNo_BE.Controllers
 {
