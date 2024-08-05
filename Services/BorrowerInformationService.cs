@@ -17,7 +17,7 @@ namespace quanLyNo_BE.Services
         {
             this.dc = dc;
         }
-        public IActionResult CreateBorrowerInformation(BorrowerInformation borrowerInformation)
+        public IActionResult CreateBorrowerInformationService(BorrowerInformation borrowerInformation)
         {
             var userId = GetUserIdFromToken();
             if (userId == null)
@@ -26,11 +26,21 @@ namespace quanLyNo_BE.Services
 
             }
             typeof(LoanRepayment).GetProperty("UserId")?.SetValue(borrowerInformation, userId);
+            // Nhân các thuộc tính kiểu int với 1
+            var properties = typeof(BorrowerInformation).GetProperties();
+            foreach (var property in properties)
+            {
+                if (property.PropertyType == typeof(int))
+                {
+                    var currentValue = (int)property.GetValue(borrowerInformation);
+                    property.SetValue(borrowerInformation, currentValue * 1);
+                }
+            }
             Create(borrowerInformation);
             return new JsonResult(new { message = Constants.Message.CreatedSuccessfully });
 
         }
-        public IEnumerable<BorrowerInformation> GetBorrowerInformation()
+        public IEnumerable<BorrowerInformation> GetBorrowerInformationService()
         {
             var userId = GetUserIdFromToken();
             if (string.IsNullOrEmpty(userId))
@@ -44,7 +54,7 @@ namespace quanLyNo_BE.Services
             return dataList;
         }
 
-        public IActionResult DeleteBorrowerInformation(int id)
+        public IActionResult DeleteBorrowerInformationService(int id)
         {
             var userId = GetUserIdFromToken();
             if (string.IsNullOrEmpty(userId))
@@ -52,20 +62,10 @@ namespace quanLyNo_BE.Services
                 new JsonResult(new { message = Constants.Message.UserIdEmpty });
 
             }
-            // var borrowerInformation = GetById(id);
-            // if (borrowerInformation == null)
-            // {
-            //     return new JsonResult(new { message = Constants.Message.NoDataFound });
-            // }
-            // if (!IsUserIdMatch(borrowerInformation, userId))
-            // {
-            //     return new JsonResult(new { message = Constants.Message.NoDataFound });
-            // }
-
             Delete(id);
             return new JsonResult(new { message = Constants.Message.DeletedSuccessfully });
         }
-        public IActionResult GetBorrowerId(int id)
+        public IActionResult GetBorrowerIdService(int id)
         {
             var userId = GetUserIdFromToken();
             if (string.IsNullOrEmpty(userId))
@@ -77,8 +77,25 @@ namespace quanLyNo_BE.Services
             {
                 return new JsonResult(new { message = Constants.Message.NoDataFound });
             }
-    
+
             return new JsonResult(borrowerId);
         }
+        public IActionResult UpdateBorrowerService(int id, BorrowerInformation borrowerInformation)
+        {
+            var userId = GetUserIdFromToken();
+            if (string.IsNullOrEmpty(userId))
+            {
+                new JsonResult(new { message = Constants.Message.UserIdEmpty });
+
+            }
+            typeof(BorrowerInformation).GetProperty("id")?.SetValue(borrowerInformation, id);
+            Update(borrowerInformation);
+            return new JsonResult(new { message = Constants.Message.UpdatedSuccessfully });
+        }
+        public IActionResult UploadImageBorrowerService(IFormFile file)
+        {
+            return UploadImage(file);
+        }
+
     }
 }

@@ -102,25 +102,26 @@ Content-Type: application/json
 ###
 POST http://localhost:5219/api/BorrowerInformation
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwianRpIjoiZGUxOTg5MzMtYjU1MC00YmFhLWI3NDktM2E2NWZiMzU0ZWI0Iiwic3ViIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwiZXhwIjoxNzIyMjMwMTI3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.jojTQP05q7lLfHs7mzaDVtydIJo2dW0cvO5dLCTRlLg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwianRpIjoiODQ0YWNmYzQtYTJhOC00ODk3LTk1MDQtZjMxYTY1OGI1MGMzIiwic3ViIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwiZXhwIjoxNzIyODQ0MDg1LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.0ZlkRTpsVQTx1LrAAzBAIFBolenO6O6iarzaix-orAo
 
 {
-  "FullName": "apiaaa",
+  "FullName": "timestampsss222",
   "PhoneNumber": "123456789",
   "Email": "johndoe@example.com",
   "IdentityCardNumber": "1234567890",
   "DateOfIssue": "2024-05-05T00:00:00",
   "PlaceOfIssue": "Some place",
-  "Gender": 0, 
+  "Gender": 0,
   "DateOfBirth": "1990-01-01T00:00:00",
   "Hometown": "Hometown",
   "Address": "123 Main Street",
   "ImageBack": "base64-encoded-image-back",
   "ImageFront": "base64-encoded-image-front",
   "Portrait": "base64-encoded-portrait",
-  "LoanDone": 1, 
+  "LoanDone": 1,
   "Note": "Some note"
 }
+
 
 
 #####
