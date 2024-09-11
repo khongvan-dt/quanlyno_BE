@@ -21,26 +21,7 @@ namespace quanLyNo_BE.Controllers
         }        private readonly IHttpContextAccessor _httpContextAccessor;
 
 
-        // [HttpPost]
-        // [Route("login")]
-        // public async Task<IActionResult> Login(User login)
-        // {
-        //     var user = await dc.Users.SingleOrDefaultAsync(u => u.UserName == login.UserName);
-        //     if (user == null)
-        //     {
-        //         return new  JsonResult(new { message = );
-        //     }
-        //     if (user.Password == login.Password)
-        //     {
-        //         int? userId = HttpContext.Session.GetInt32("UserId");
-        //         string userName = HttpContext.Session.GetString("UserName");
-        //         return new  JsonResult(new { message = user);
-        //     }
-        //     else
-        //     {
-        //         return new  JsonResult(new { message = );
-        //     }
-        // }
+        
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login(User login)

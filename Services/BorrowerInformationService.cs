@@ -6,16 +6,21 @@ using quanLyNo_BE.Models;
 using System.Collections.Generic;
 using System;
 using quanLyNo_BE.Repository;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 namespace quanLyNo_BE.Services
 {
     public class BorrowerInformationService : Repository<BorrowerInformation>
     {
         private readonly ApplicationDbContext dc;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public BorrowerInformationService(ApplicationDbContext dc, IHttpContextAccessor httpContextAccessor)
             : base(dc, httpContextAccessor)
         {
             this.dc = dc;
+            _httpContextAccessor = httpContextAccessor;
+
         }
         public IActionResult CreateBorrowerInformationService(BorrowerInformation borrowerInformation)
         {
@@ -23,9 +28,8 @@ namespace quanLyNo_BE.Services
             if (userId == null)
             {
                 return new JsonResult(new { message = Constants.Message.UserIdEmpty });
-
             }
-            typeof(LoanRepayment).GetProperty("UserId")?.SetValue(borrowerInformation, userId);
+            typeof(BorrowerInformation).GetProperty("UserId")?.SetValue(borrowerInformation, userId);
             // Nhân các thuộc tính kiểu int với 1
             var properties = typeof(BorrowerInformation).GetProperties();
             foreach (var property in properties)
@@ -82,16 +86,37 @@ namespace quanLyNo_BE.Services
         }
         public IActionResult UpdateBorrowerService(int id, BorrowerInformation borrowerInformation)
         {
+            // Lấy bản ghi hiện tại từ cơ sở dữ liệu
+            var currentData = base.GetById(id);
+            if (currentData == null)
+            {
+                return new JsonResult(new { message = Constants.Message.NoDataFound });
+            }
+
             var userId = GetUserIdFromToken();
             if (string.IsNullOrEmpty(userId))
             {
-                new JsonResult(new { message = Constants.Message.UserIdEmpty });
-
+                return new JsonResult(new { message = Constants.Message.UserIdEmpty });
             }
-            typeof(BorrowerInformation).GetProperty("id")?.SetValue(borrowerInformation, id);
-            Update(borrowerInformation);
+
+            // Chỉ cập nhật các thuộc tính được truyền từ client
+            foreach (var property in typeof(BorrowerInformation).GetProperties())
+            {
+                var newValue = property.GetValue(borrowerInformation);
+                if (newValue != null)
+                {
+                    property.SetValue(currentData, newValue);
+                }
+            }
+
+            // Cập nhật bản ghi với các thuộc tính đã thay đổi
+            Update(currentData);
+
             return new JsonResult(new { message = Constants.Message.UpdatedSuccessfully });
         }
+
+
+
         public IActionResult UploadImageBorrowerService(IFormFile file)
         {
             return UploadImage(file);

@@ -19,7 +19,6 @@ namespace quanLyNo_BE.Controllers
         {
             _borrowerInformationService = borrowerInformationService;
         }
-
         [HttpPost]
         public IActionResult CreateBorrowerInformation([FromBody] BorrowerInformation borrowerInformation)
         {
@@ -36,7 +35,7 @@ namespace quanLyNo_BE.Controllers
             {
                 return NotFound(new { message = Constants.Message.NoDataFound });
             }
-            return Ok(new { data = result, message = Constants.Message.DataListSusses });
+            return Ok(result);
         }
         [HttpGet("{id}")]
         public IActionResult GetBorrowerInformationById(int id)
@@ -44,7 +43,7 @@ namespace quanLyNo_BE.Controllers
             var borrowerInformation = _borrowerInformationService.GetById(id);
             if (borrowerInformation == null)
                 return NotFound(new { message = Constants.Message.NoDataFound });
-            return Ok(new { data = borrowerInformation, message = Constants.Message.NoDataFound });
+            return Ok(borrowerInformation);
         }
         [HttpDelete("{id}")]
         public IActionResult DeleteBorrowerInformationId(int id)
@@ -62,6 +61,7 @@ namespace quanLyNo_BE.Controllers
                 
             return _borrowerInformationService.UpdateBorrowerService(id, borrowerInformation);
         }
+        
         [HttpPost("upload")]
         public IActionResult UploadImageBorrowerFile(IFormFile file)
         {

@@ -34,49 +34,7 @@ namespace quanLyNo_BE.controller
             _configuration = configuration;
         }
 
-        // [HttpPost]
-        // [Route("login")]
-        // public async Task<IActionResult> Login([FromBody] LoginModel model)
-        // {
-        //     var user = await _userManager.FindByNameAsync(model.Username);
-        //     if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
-        //     {
-        //         var userRoles = await _userManager.GetRolesAsync(user);
-
-        //         var authClaims = new List<Claim>
-        //         {
-        //             new Claim(ClaimTypes.Name, user.UserName),
-        //             new Claim(ClaimTypes.NameIdentifier, user.Id), // Sử dụng ClaimTypes.NameIdentifier để lưu ID của người dùng
-        //             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-        //         };
-
-        //         foreach (var userRole in userRoles)
-        //         {
-        //             authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-        //         }
-
-        //         var token = GetToken(authClaims);
-
-        //         // Console log ID của người dùng
-        //         Console.WriteLine("User ID: " + user.Id);
-
-        //         // Trả về token trong phản hồi
-        //         return Ok(
-        //             new
-        //             {
-        //                 Status = "Success",
-        //                 Message = "User logged in successfully!",
-        //                 Token = new JwtSecurityTokenHandler().WriteToken(token),
-        //                 Expiration = token.ValidTo
-        //             }
-        //         );
-        //     }
-        //     return Unauthorized();
-        // }
-        //
-
-
-
+       
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)

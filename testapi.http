@@ -1,7 +1,7 @@
 
 ####
 GET http://localhost:5219/api/BorrowerInformation HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwianRpIjoiMzc0YmE2MDYtZjYwZi00ZjAwLWJhNjAtNTljYmY0NjJkMGI2Iiwic3ViIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwiZXhwIjoxNzIxNjQyODU4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.I-iL2p3Sy51Iwn8EwwOfOSZd4eAFdkiPoEaYuBgwFZs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwianRpIjoiZGMzZjZmN2UtZTczNy00ODZjLTk3NzQtMzljNThjMmQzNjdjIiwic3ViIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwiZXhwIjoxNzI1OTkyMzU2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ._QXt8r1WHX4UhYwuJjEPcPCx7qEKyJN1KtVUhf6nvL0
 
 Content-type: application/json
 
@@ -10,8 +10,8 @@ Content-type: application/json
 }
 ####
 GET http://localhost:5219/api/LoanInformation HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwianRpIjoiZGMzZjZmN2UtZTczNy00ODZjLTk3NzQtMzljNThjMmQzNjdjIiwic3ViIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwiZXhwIjoxNzI1OTkyMzU2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ._QXt8r1WHX4UhYwuJjEPcPCx7qEKyJN1KtVUhf6nvL0
 Content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwianRpIjoiZmIwNDAyZTAtNjdmYy00OTQwLTg1NWMtZGNmY2M0M2ZjMDZjIiwic3ViIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwiZXhwIjoxNzIyNDQwNzIwLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.JlYgy6mm6EkLGjrzRc6ndWnyQKi6a1yxvAc0LoLVl34
 
 {
   
@@ -31,7 +31,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hc
 
 GET http://localhost:5219/api/LoanDone HTTP/1.1
 Content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwianRpIjoiNWY5NjA5NDUtMGVkMC00NDk4LTgwM2UtYmEyODY5ODA0ZDc2Iiwic3ViIjoiNjJjMWUwOTgtYzBkMC00Zjc3LTgyZmYtNWU1Mzc4MTRmZjAzIiwiZXhwIjoxNzIwMDkwMjI3LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ._JqhJY6JcHa6ux0mFZ0Ju24M10PiJMvFPm8NlkAhngU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwianRpIjoiZGMzZjZmN2UtZTczNy00ODZjLTk3NzQtMzljNThjMmQzNjdjIiwic3ViIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwiZXhwIjoxNzI1OTkyMzU2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ._QXt8r1WHX4UhYwuJjEPcPCx7qEKyJN1KtVUhf6nvL0
 
 {
   
@@ -39,6 +39,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hc
 ####
 GET http://localhost:5219/api/LoanInformation HTTP/1.1
 Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwianRpIjoiZGMzZjZmN2UtZTczNy00ODZjLTk3NzQtMzljNThjMmQzNjdjIiwic3ViIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwiZXhwIjoxNzI1OTkyMzU2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ._QXt8r1WHX4UhYwuJjEPcPCx7qEKyJN1KtVUhf6nvL0
 
 {
 
@@ -46,17 +47,27 @@ Content-type: application/json
 
 
 ####
-PUT http://localhost:5219/api/Product HTTP/1.1
+PUT http://localhost:5219/api/BorrowerInformation/7 HTTP/1.1
 Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZjIwYmMzN2ItOGJjZC00ZGZjLTlhOWUtOTJjNGExMGJhZDhiIiwianRpIjoiMjU1YzQwYmItZmEwYi00M2FiLWE1YTItYjE1YWJiMGJmZTcwIiwic3ViIjoiZjIwYmMzN2ItOGJjZC00ZGZjLTlhOWUtOTJjNGExMGJhZDhiIiwiZXhwIjoxNzIyODU5MTg0LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.tfFZ4Rdg7BBQQNdADVnOgcG7r2yniec80-D3z6UafiU
 
 {
-    "Id": 3,
-    "Name":"Test API test",
-    "Description": "Description for Product 12",
-    "QuantityInStock": 22,
-    "Price": 1.992,
-    "Category": "Category 00",
-    "transparency": 0
+   "FullName": "yteeeesssss",
+  "PhoneNumber": "123456789",
+  "Email": "johndoe@example.com",
+  "IdentityCardNumber": "1234567890",
+  "DateOfIssue": "2024-05-05T00:00:00",
+  "PlaceOfIssue": "Some place",
+  "Gender": 0,
+  "DateOfBirth": "1990-01-01T00:00:00",
+  "Hometown": "Hometown",
+  "Address": "123 Main Street",
+  "ImageBack": "base64-encoded-image-back",
+  "ImageFront": "base64-encoded-image-front",
+  "Portrait": "base64-encoded-portrait",
+  "LoanDone": 1,
+  "Note": "Some note"
+   
 }
 
 ####
@@ -102,7 +113,7 @@ Content-Type: application/json
 ###
 POST http://localhost:5219/api/BorrowerInformation
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwianRpIjoiODQ0YWNmYzQtYTJhOC00ODk3LTk1MDQtZjMxYTY1OGI1MGMzIiwic3ViIjoiNDhkY2M1NTUtNjM5NS00NTQwLWJiNjMtYzJiZDQxYTcwY2JkIiwiZXhwIjoxNzIyODQ0MDg1LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.0ZlkRTpsVQTx1LrAAzBAIFBolenO6O6iarzaix-orAo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwianRpIjoiNWMxZjg3OTMtODgxYi00MzhiLTkxYTMtY2EyMjE5ZWMyNDJmIiwic3ViIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwiZXhwIjoxNzI0NzU1MTM2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.bnkCG3TSc0aVwfWCZrtoaJJM3mPPyU2-3IypM3j8kCk
 
 {
   "FullName": "timestampsss222",
@@ -171,9 +182,9 @@ POST http://localhost:5219/api/Authenticate/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "Username": "admin11",
-    "Password": "Admin11@123V",
-    "Email": "admin11@123V"
+    "Username": "admin12",
+    "Password": "Admin12@123V",
+    "Email": "admin12@123V"
 }
 
 
@@ -228,8 +239,8 @@ POST http://localhost:5219/api/Authenticate/login HTTP/1.1
 Content-Type:application/json
 
 {
-    "UserName": "admin11",
-    "Password": "Admin11@123V"
+    "UserName": "admin12",
+    "Password": "Admin12@123V"
 }
 
 #####
