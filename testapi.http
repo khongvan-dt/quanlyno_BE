@@ -1,7 +1,7 @@
 
 ####
 GET http://localhost:5219/api/BorrowerInformation HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwianRpIjoiZGMzZjZmN2UtZTczNy00ODZjLTk3NzQtMzljNThjMmQzNjdjIiwic3ViIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwiZXhwIjoxNzI1OTkyMzU2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ._QXt8r1WHX4UhYwuJjEPcPCx7qEKyJN1KtVUhf6nvL0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOGM2NmU1YTctOTI2My00ZWM1LWIxYjAtYWI0OWE2ZWJhOWIxIiwianRpIjoiYTAyMzQ0ZTItM2VjMi00NjkzLThjYjItY2Y3OTliOTNlODIzIiwic3ViIjoiOGM2NmU1YTctOTI2My00ZWM1LWIxYjAtYWI0OWE2ZWJhOWIxIiwiZXhwIjoxNzI2MDgxODQ5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.xHTTnc8oEGXNpaVSG8pWxr3hvESgkr1Bal50hBpTeSc
 
 Content-type: application/json
 
@@ -113,7 +113,7 @@ Content-Type: application/json
 ###
 POST http://localhost:5219/api/BorrowerInformation
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwianRpIjoiNWMxZjg3OTMtODgxYi00MzhiLTkxYTMtY2EyMjE5ZWMyNDJmIiwic3ViIjoiZGQ1NWQ1NWMtOWRhNS00NzQ1LWIxNjktYWY0YTI1ZTBjYmM1IiwiZXhwIjoxNzI0NzU1MTM2LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.bnkCG3TSc0aVwfWCZrtoaJJM3mPPyU2-3IypM3j8kCk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4xMiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiOGM2NmU1YTctOTI2My00ZWM1LWIxYjAtYWI0OWE2ZWJhOWIxIiwianRpIjoiYTAyMzQ0ZTItM2VjMi00NjkzLThjYjItY2Y3OTliOTNlODIzIiwic3ViIjoiOGM2NmU1YTctOTI2My00ZWM1LWIxYjAtYWI0OWE2ZWJhOWIxIiwiZXhwIjoxNzI2MDgxODQ5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAifQ.xHTTnc8oEGXNpaVSG8pWxr3hvESgkr1Bal50hBpTeSc
 
 {
   "FullName": "timestampsss222",
@@ -182,9 +182,9 @@ POST http://localhost:5219/api/Authenticate/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "Username": "admin12",
-    "Password": "Admin12@123V",
-    "Email": "admin12@123V"
+    "Username": "admin11",
+    "Password": "admin11@123V",
+    "Email": "admin11@123V"
 }
 
 
@@ -239,8 +239,8 @@ POST http://localhost:5219/api/Authenticate/login HTTP/1.1
 Content-Type:application/json
 
 {
-    "UserName": "admin12",
-    "Password": "Admin12@123V"
+    "UserName": "user12",
+    "Password": "User12@123V"
 }
 
 #####

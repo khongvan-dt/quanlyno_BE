@@ -9,9 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using quanLyNo_BE.Models;
 using quanLyNo_BE.Services;
-
-
-
+using quanLyNo_BE.Sender;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -61,7 +59,21 @@ builder.Services.AddControllers();
 
 
 var app = builder.Build();
-
+// Create a scope to run the seed data initialization
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        // Initialize seed data
+        await SeedData.Initialize(services);
+    }
+    catch (Exception ex)
+    {
+        // Log error (optional)
+        Console.WriteLine($"An error occurred while seeding the database: {ex.Message}");
+    }
+}
 app.UseRouting();
 app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 

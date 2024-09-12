@@ -19,6 +19,9 @@ namespace quanLyNo_BE.Models
         public DbSet<LoanContract> LoanContracts { get; set; }
         public DbSet<LoanRepayment> LoanRepayments { get; set; }
         public DbSet<LoanDone> LoanDones { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -69,6 +72,11 @@ namespace quanLyNo_BE.Models
                         .WithMany()
                         .HasForeignKey(ld => ld.LoanInformationId)
                         .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<RefreshTokenRequest>();
+            modelBuilder.Entity<RefreshToken>()
+          .HasIndex(rt => rt.RToken)
+          .IsUnique();
 
             base.OnModelCreating(modelBuilder);
         }
